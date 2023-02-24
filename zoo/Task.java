@@ -1,19 +1,19 @@
 package zoo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import animals.Lion;
+import animals.Wolf;
 import cage.LionCage;
+import cage.WolfCage;
 import factory.LionsFactory;
+import factory.WolfFactory;
 
 public class Task {
 
     public static void main(String[] args) {
-        Lion firstLion = new Lion(10, 10, 10, 10);
-        System.out.println(firstLion);
-        firstLion.feed(100);
-        System.out.println(firstLion.getWeight());
-        ArrayList<Lion> newColl = LionsFactory.createLionCollection(50);
+        ArrayList<Lion> newColl = LionsFactory.createLionCollection(10);
         System.out.println(newColl);
         LionCage newCage = new LionCage();
         for (Lion el : newColl) {
@@ -21,7 +21,33 @@ public class Task {
         }
         System.out.println(newCage);
         System.out.println(newCage.catchAnimal());
-        newCage.foodTransfer(2_000);
+        newCage.foodTransfer(500);
         newCage.cageClean();
+        newCage.ageSort();
+        newCage.printCage();
+        System.out.println("-------Sorting lions by mane---------");
+        newCage.maneSort();
+        newCage.printCage();
+        WolfCage secCage = new WolfCage();
+        ArrayList<Wolf> secColl = WolfFactory.createWolfCollection(10);
+        for (Wolf el : secColl) {
+            secCage.animalAdd(el);
+        }
+        secCage.printCage();
+        System.out.println("-------Sorting wolves by weight and age ---------");
+        secCage.sortByWeightAndAge();
+        secCage.printCage();
+        System.out.println("---------Iterating through wolf list------------");
+        Iterator<Wolf> firstIter = secCage.iterator();
+        while (firstIter.hasNext()) {
+            Wolf nextWolf = firstIter.next();
+            System.out.println(nextWolf);
+        }
+        System.out.println("Hello there");
+        Iterator<Wolf> newIter = secCage.iterator();
+        while (newIter.hasNext()) {
+            Wolf nextWolf = newIter.next();
+            System.out.println(nextWolf);
+        }
     }
 }

@@ -2,12 +2,12 @@ package animals;
 
 public abstract class Animal {
 
-    protected int birthYear;
+    protected int age;
     protected int weight;
     protected int limbsCount;
 
-    Animal(int birthYear, int weight, int limbsCount) {
-        this.birthYear = birthYear;
+    Animal(int age, int weight, int limbsCount) {
+        this.age = age;
         this.weight = weight;
         this.limbsCount = limbsCount;
     }
@@ -24,12 +24,12 @@ public abstract class Animal {
         }
     }
 
-    public int getBirthYear() {
-        return this.birthYear;
+    public int getAge() {
+        return this.age;
     }
 
-    public void setBirthYear(int birthYear) {
-        this.birthYear = birthYear;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getWeight() {

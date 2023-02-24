@@ -3,11 +3,12 @@ package cage;
 import animals.Animal;
 
 public interface AnimalCage {
-    public abstract int animalAdd(Animal animalToAdd);
 
-    public abstract void foodTransfer(int foodWeight);
+    int animalAdd(Animal animalToAdd);
 
-    public abstract void cageClean();
+    void foodTransfer(int foodWeight);
 
-    public abstract Animal catchAnimal();
+    void cageClean();
+
+    Animal catchAnimal();
 }

@@ -2,17 +2,32 @@ package cage;
 
 import animals.Animal;
 import animals.Wolf;
+import comparators.WolfComparator;
+import iterators.WolfIterator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
-public class WolfCage implements AnimalCage {
-    private int clean;
-    private ArrayList<Wolf> wolves;
-    private Random rand = new Random();
+public class WolfCage implements AnimalCage, Iterable<Wolf> {
+    protected final ArrayList<Wolf> wolves;
+    protected int clean;
+    protected WolfIterator wolfIter;
 
     public WolfCage() {
         wolves = new ArrayList<>();
+        wolfIter = new WolfIterator(wolves);
+    }
+
+    public void sortByWeightAndAge() {
+        Collections.sort(wolves, new WolfComparator());
+    }
+
+    public void printCage() {
+        for (Wolf el : wolves) {
+            System.out.println(el);
+        }
     }
 
     @Override
@@ -42,8 +57,12 @@ public class WolfCage implements AnimalCage {
 
     @Override
     public Animal catchAnimal() {
+        Random rand = new Random();
         int index = rand.nextInt(wolves.size());
-        return wolves.get(index);
+        if (wolves.size() > 0) {
+            return wolves.get(index);
+        } else
+            return null;
     }
 
     @Override
@@ -52,5 +71,10 @@ public class WolfCage implements AnimalCage {
                 "clean=" + clean +
                 ", wolves=" + wolves.size() +
                 '}';
+    }
+
+    @Override
+    public Iterator<Wolf> iterator() {
+        return new WolfIterator(wolves);
     }
 }

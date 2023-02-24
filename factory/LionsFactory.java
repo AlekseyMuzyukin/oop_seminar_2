@@ -1,12 +1,13 @@
 package factory;
 
 import animals.Lion;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class LionsFactory {
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     public static ArrayList<Lion> createLionCollection(int lionCount) {
         ArrayList<Lion> newLionCollection = new ArrayList<>();
