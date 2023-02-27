@@ -1,6 +1,5 @@
 package cage;
 
-import animals.Animal;
 import animals.Wolf;
 import comparators.WolfComparator;
 import iterators.WolfIterator;
@@ -10,7 +9,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
-public class WolfCage implements AnimalCage, Iterable<Wolf> {
+public class WolfCage implements AnimalCage<Wolf>, Iterable<Wolf> {
     protected final ArrayList<Wolf> wolves;
     protected int clean;
     protected WolfIterator wolfIter;
@@ -31,13 +30,18 @@ public class WolfCage implements AnimalCage, Iterable<Wolf> {
     }
 
     @Override
-    public int animalAdd(Animal wolfToAdd) {
+    public int animalAdd(Wolf wolfToAdd) {
         if (wolfToAdd instanceof Wolf) {
-            wolves.add((Wolf) wolfToAdd);
+            wolves.add(wolfToAdd);
         } else {
             System.out.println("Not a wolf");
         }
         return wolves.size();
+    }
+
+    @Override
+    public void ageSort() {
+        Collections.sort(wolves, new WolfComparator());
     }
 
     @Override
@@ -56,7 +60,7 @@ public class WolfCage implements AnimalCage, Iterable<Wolf> {
     }
 
     @Override
-    public Animal catchAnimal() {
+    public Wolf catchAnimal() {
         Random rand = new Random();
         int index = rand.nextInt(wolves.size());
         if (wolves.size() > 0) {

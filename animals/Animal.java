@@ -1,5 +1,7 @@
 package animals;
 
+import OOP.Product;
+
 public abstract class Animal {
 
     protected int age;
@@ -18,10 +20,15 @@ public abstract class Animal {
 
     public void feed(int foodWeight) {
         if (this.weight + foodWeight <= getMaxWeight()) {
-            this.weight = +foodWeight;
+            this.weight += foodWeight;
         } else {
+            this.weight = getMaxWeight();
             System.out.println("Max weight exceeded");
         }
+    }
+
+    public void feed(Product product) {
+        System.out.println("Don't feed the " + this.getType() + " " + product.getName() + " from the vending machine");
     }
 
     public int getAge() {

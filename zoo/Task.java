@@ -1,14 +1,15 @@
 package zoo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import animals.Lion;
 import animals.Wolf;
 import cage.LionCage;
 import cage.WolfCage;
 import factory.LionsFactory;
 import factory.WolfFactory;
+import zoo_cell.Zoo;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Task {
 
@@ -49,5 +50,7 @@ public class Task {
             Wolf nextWolf = newIter.next();
             System.out.println(nextWolf);
         }
+        Zoo newZoo = new Zoo();
+        System.out.println(newZoo);
     }
 }
