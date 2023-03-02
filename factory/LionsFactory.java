@@ -9,6 +9,10 @@ public class LionsFactory {
 
     private static final Random rand = new Random();
 
+    public static Lion createRandomLion() {
+        return new Lion(rand.nextInt(50), rand.nextInt(50), 4, rand.nextInt(20));
+    }
+
     public static ArrayList<Lion> createLionCollection(int lionCount) {
         ArrayList<Lion> newLionCollection = new ArrayList<>();
         for (int i = 0; i < lionCount; i++) {
@@ -16,4 +20,5 @@ public class LionsFactory {
         }
         return newLionCollection;
     }
+
 }
